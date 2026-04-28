@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Payment</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background: url('https://i.imgur.com/3ZQ3Z4S.jpg') no-repeat center center/cover;
+    color:white;
+    text-align:center;
+}
+
+.overlay {
+    background: rgba(0,0,0,0.7);
+    min-height:100vh;
+    padding:20px;
+}
+
+.logo {
+    position:absolute;
+    top:10px;
+    left:10px;
+    width:70px;
+}
+
+.box {
+    background: rgba(0,0,0,0.6);
+    padding:20px;
+    margin:20px auto;
+    width:90%;
+    max-width:350px;
+    border-radius:10px;
+}
+
+button {
+    padding:12px 20px;
+    background:green;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<img src="https://upload.wikimedia.org/wikipedia/en/7/77/Garena_logo.png" class="logo">
+
+<div class="overlay">
+
+<h2>Player Details</h2>
+
+<div class="box">
+<p>UID: <span id="uid"></span></p>
+<p>Name: ******</p>
+<p>Level: **</p>
+<p>Rank: *****</p>
+</div>
+
+<h2>Payment</h2>
+
+<div class="box">
+
+<img src="https://i.imgur.com/gpay.png" width="200"><br><br>
+
+<a href="upi://pay?pa=ravinrobert31@okicici&pn=Ravin&am=50&cu=INR">
+<button>Pay with GPay / PhonePe</button>
+</a>
+
+<p id="timer">05:00</p>
+
+</div>
+
+<input type="file" id="proof"><br><br>
+
+<button onclick="submitProof()">Submit Payment</button>
+
+<p id="status"></p>
+
+</div>
+
+<script>
+document.getElementById("uid").innerText = localStorage.getItem("uid");
+
+// Timer
+let time = 300;
+let timer = setInterval(()=>{
+    let m = Math.floor(time/60);
+    let s = time%60;
+
+    document.getElementById("timer").innerText =
+    (m<10?"0":"")+m+":"+(s<10?"0":"")+s;
+
+    time--;
+
+    if(time<0){
+        clearInterval(timer);
+        document.getElementById("timer").innerText="EXPIRED";
+    }
+},1000);
+
+function submitProof(){
+    let file = document.getElementById("proof").files.length;
+
+    if(file==0){
+        alert("Upload screenshot");
+        return;
+    }
+
+    document.getElementById("status").innerText =
+    "Payment submitted! Wait for verification.";
+}
+</script>
+
+</body>
+  </html>
