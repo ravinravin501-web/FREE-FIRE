@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Free Fire Unban</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background: url('https://i.imgur.com/3ZQ3Z4S.jpg') no-repeat center center/cover;
+    color:white;
+    text-align:center;
+}
+
+.overlay {
+    background: rgba(0,0,0,0.7);
+    height:100vh;
+    padding-top:100px;
+}
+
+.logo {
+    position:absolute;
+    top:10px;
+    left:10px;
+    width:70px;
+}
+
+.box {
+    background: rgba(0,0,0,0.6);
+    padding:20px;
+    margin:auto;
+    width:90%;
+    max-width:350px;
+    border-radius:10px;
+}
+
+input {
+    width:80%;
+    padding:10px;
+    margin:10px;
+    border-radius:5px;
+    border:none;
+}
+
+button {
+    padding:12px 20px;
+    background:green;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<img src="https://upload.wikimedia.org/wikipedia/en/7/77/Garena_logo.png" class="logo">
+
+<div class="overlay">
+
+<div class="box">
+<h2>Free Fire Unban</h2>
+
+<input type="text" id="uid" placeholder="Enter UID"><br>
+
+<button onclick="goNext()">Continue</button>
+
+<p style="font-size:12px;">Fan-made service</p>
+</div>
+
+</div>
+
+<script>
+function goNext(){
+    let uid = document.getElementById("uid").value;
+
+    if(uid==""){
+        alert("Enter UID");
+        return;
+    }
+
+    localStorage.setItem("uid", uid);
+    window.location.href="page2.html";
+}
+</script>
+
+</body>
+</html>
